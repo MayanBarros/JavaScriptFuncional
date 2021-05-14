@@ -6,9 +6,20 @@ const carrinho = [
     { nome: 'Tinta', quantidade: 6, preco: 20.99 },
 ]
 
+Array.prototype.meuMap = function(fn) {
+    const novoArray = []
+    for( let i = 0 ; i < this.length ; i++ ) {
+        const resultado = fn(this[i], i, this)
+        novoArray.push(resultado)
+    }
+    return novoArray
+}
+
 const getNome = product => product.nome
-console.log(carrinho.map(getNome))
+console.log(carrinho.meuMap(getNome))
 
 const getTotal = product => product.preco * product.quantidade
-const totais = carrinho.map(getTotal)
+const totais = carrinho.meuMap(getTotal)
 console.log(totais)
+
+
