@@ -1,3 +1,14 @@
+Array.prototype.meuReduce = function(fn, inicial) {
+    let acc = inicial
+    for(let i = 0 ; i < this.length ; i++) {
+        if (!acc && i === 0) {
+            acc = this[i]
+            continue
+        }
+        acc = fn(acc, this[i], i, this) 
+    }
+    return acc
+}
 const carrinho = [
     { nome: 'Caneta', quantidade: 10, preco: 7.99, fragil: true },
     { nome: 'Mochila', quantidade: 1, preco: 76.27, fragil: false },
@@ -14,7 +25,7 @@ const carrinho = [
 const media = carrinho
     .filter(el => el.fragil)
     .map(el => el.preco * el.quantidade)
-    .reduce((acc, el) => {
+    .meuReduce((acc, el) => {
         const novaQuantidade = acc.quantidade + 1
         const novoTotal = acc.total + el
         return {
