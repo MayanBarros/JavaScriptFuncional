@@ -55,6 +55,18 @@ function elementosTerminadosCom(extensao) {
     }
 }
 
+function removerSimbolos(simbolos) {
+    return function(array) {
+        return array.map(el => {
+            let textoSemSimbolos = el
+            simbolos.forEach(simbolo => {
+                textoSemSimbolos = textoSemSimbolos.split(simbolo).join('')
+            })
+            return textoSemSimbolos
+        })
+    }
+}
+
 module.exports = { 
     lerDiretorio,
     elementosTerminadosCom,
@@ -63,5 +75,6 @@ module.exports = {
     removerElementosSeVazio, 
     removerElementosSeIncluir,
     removerApenasNumero,
-    removerEspacoVazio
+    removerEspacoVazio,
+    removerSimbolos
 }
