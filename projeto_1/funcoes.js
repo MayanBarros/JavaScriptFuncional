@@ -67,6 +67,16 @@ function removerSimbolos(simbolos) {
     }
 }
 
+function juntarElementos (array) {
+    return array.join(' ')
+} 
+
+function separarTextoPor(simbolo) {
+    return function(texto) {
+        return texto.split(simbolo)
+    }
+}
+
 module.exports = { 
     lerDiretorio,
     elementosTerminadosCom,
@@ -76,5 +86,7 @@ module.exports = {
     removerElementosSeIncluir,
     removerApenasNumero,
     removerEspacoVazio,
-    removerSimbolos
+    removerSimbolos,
+    juntarElementos,
+    separarTextoPor
 }
