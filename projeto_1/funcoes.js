@@ -77,6 +77,16 @@ function separarTextoPor(simbolo) {
     }
 }
 
+function agruparElementos(palavras) {
+    return Object.values(palavras.reduce((agrupador, palavra) => {
+        const el = palavra.toLowerCase()
+        const quantidade = agrupador[el] ? agrupador[el].quantidade + 1 : 1
+        agrupador[el] = { elemento: el, quantidade }
+        return agrupador
+    }, {}))
+}
+
+
 module.exports = { 
     lerDiretorio,
     elementosTerminadosCom,
@@ -88,5 +98,6 @@ module.exports = {
     removerEspacoVazio,
     removerSimbolos,
     juntarElementos,
-    separarTextoPor
+    separarTextoPor,
+    agruparElementos
 }
